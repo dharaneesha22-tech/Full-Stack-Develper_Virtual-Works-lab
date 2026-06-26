@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Profile Studio</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <h1 class="title">🚀 AI Profile Studio</h1>
+
+    <p class="subtitle">
+        Create Your Professional Digital Identity
+    </p>
+
+    <form method="POST">
+
+        <input type="text"
+               name="name"
+               placeholder="Full Name"
+               required>
+
+        <input type="email"
+               name="email"
+               placeholder="Email"
+               required>
+
+        <input type="text"
+               name="college"
+               placeholder="College Name"
+               required>
+
+        <input type="text"
+               name="department"
+               placeholder="Department"
+               required>
+
+        <textarea name="bio"
+                  placeholder="Write About Yourself"
+                  required></textarea>
+
+        <input type="text"
+               name="image"
+               placeholder="Profile Image URL"
+               required>
+
+        <input type="text"
+               name="linkedin"
+               placeholder="LinkedIn URL">
+
+        <input type="text"
+               name="github"
+               placeholder="GitHub URL">
+
+        <input type="text"
+               name="skills"
+               placeholder="Python, Flask, AI, HTML"
+               required>
+
+        <button type="submit">
+            Generate Profile
+        </button>
+
+    </form>
+
+    {% if profile %}
+
+    <div class="card">
+
+        <img src="{{ profile.image }}">
+
+        <h2>{{ profile.name }}</h2>
+
+        <h4>{{ profile.department }}</h4>
+
+        <p>{{ profile.college }}</p>
+
+        <p>{{ profile.email }}</p>
+
+        <div class="bio">
+            {{ profile.bio }}
+        </div>
+
+        <div class="skills">
+
+            {% for skill in profile.skills %}
+            <span>{{ skill }}</span>
+            {% endfor %}
+
+        </div>
+
+        <div class="links">
+
+            <a href="{{ profile.linkedin }}"
+               target="_blank">
+               LinkedIn
+            </a>
+
+            <a href="{{ profile.github }}"
+               target="_blank">
+               GitHub
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        -45deg,
+        #00c6ff,
+        #0072ff,
+        #8e2de2,
+        #ff0080
+    );
+    background-size:400% 400%;
+    animation:gradient 10s ease infinite;
+    padding:30px;
+}
+
+@keyframes gradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+}
+
+.title{
+    text-align:center;
+    color:white;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:white;
+    margin-bottom:25px;
+}
+
+form{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.3);
+}
+
+input,
+textarea{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:none;
+    border-radius:12px;
+    font-size:15px;
+}
+
+textarea{
+    height:100px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+.card{
+    margin-top:30px;
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:25px;
+    color:white;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+.card img{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+}
+
+.card h2{
+    margin-top:15px;
+}
+
+.bio{
+    margin-top:15px;
+    line-height:1.6;
+}
+
+.skills{
+    margin-top:15px;
+}
+
+.skills span{
+    display:inline-block;
+    margin:5px;
+    padding:8px 15px;
+    border-radius:20px;
+    background:white;
+    color:#111827;
+    font-weight:bold;
+}
+
+.links{
+    margin-top:20px;
+}
+
+.links a{
+    text-decoration:none;
+    background:white;
+    color:#111827;
+    padding:10px 20px;
+    border-radius:10px;
+    margin:5px;
+    display:inline-block;
+}
