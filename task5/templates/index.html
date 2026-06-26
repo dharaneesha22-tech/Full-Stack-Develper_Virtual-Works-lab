@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NEXUS AI Workforce Dashboard</title>
+
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>NEXUS AI Workforce Command Center</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2 id="total">0</h2>
+<p>Total Employees</p>
+</div>
+
+<div class="card green">
+<h2 id="available">0</h2>
+<p>Available</p>
+</div>
+
+<div class="card red">
+<h2 id="busy">0</h2>
+<p>Busy</p>
+</div>
+
+<div class="card blue">
+<h2 id="health">0%</h2>
+<p>Team Health</p>
+</div>
+
+</div>
+
+<input
+type="text"
+id="search"
+placeholder="Search Employee..."
+>
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Role</th>
+<th>Status</th>
+<th>Workload</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="employeeTable">
+
+{% for emp in employees %}
+
+<tr>
+
+<td>{{emp.name}}</td>
+
+<td>{{emp.role}}</td>
+
+<td>
+
+<span class="
+status
+{% if emp.status=='Available' %}
+available
+{% else %}
+busy
+{% endif %}
+">
+{{emp.status}}
+</span>
+
+</td>
+
+<td>{{emp.workload}}%</td>
+
+<td>
+
+<button
+onclick="toggleStatus({{emp.id}})"
+>
+Change
+</button>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<div class="chart-box">
+<canvas id="teamChart"></canvas>
+</div>
+
+<div class="feed">
+
+<h2>Live Activity Feed</h2>
+
+<ul id="feed">
+<li>System Started...</li>
+</ul>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static',filename='script.js') }}"></script>
+
+</body>
+</html>
