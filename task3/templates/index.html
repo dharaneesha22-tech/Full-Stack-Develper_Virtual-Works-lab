@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CoffeeVerse Rating Hub</title>
+<link rel="stylesheet"
+href="{{ url_for('static',filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>☕ CoffeeVerse Rating Hub</h1>
+
+<div class="stats">
+
+<div class="box">
+<h2>{{ coffees|length }}</h2>
+<p>Total Coffees</p>
+</div>
+
+<div class="box">
+<h2>{{ total_votes }}</h2>
+<p>Total Votes</p>
+</div>
+
+</div>
+
+<input
+type="text"
+id="search"
+placeholder="🔍 Search Coffee..."
+onkeyup="searchCoffee()">
+
+<form action="/add" method="POST">
+
+<input
+type="text"
+name="coffee"
+placeholder="Add New Coffee"
+required>
+
+<button type="submit">
+Add Coffee
+</button>
+
+</form>
+
+<div class="leaderboard">
+
+<h2>🏆 Leaderboard</h2>
+
+<ol>
+
+{% for coffee in coffees[:3] %}
+
+<li>
+{{ coffee['name'] }}
+-
+{{ coffee['votes'] }}
+Votes
+</li>
+
+{% endfor %}
+
+</ol>
+
+</div>
+
+<div class="grid">
+
+{% for coffee in coffees %}
+
+<div class="card">
+
+<h2>{{ coffee['name'] }}</h2>
+
+<p>
+{{ coffee['votes'] }}
+Votes
+</p>
+
+<div class="progress">
+
+<div class="fill"
+style="width:
+{{ (coffee['votes']/max_vote)*100 }}%">
+</div>
+
+</div>
+
+<a href="/vote/{{ coffee['id'] }}">
+<button>👍 Vote</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="buttons">
+
+<a href="/reset">
+<button class="reset">
+Reset Votes
+</button>
+</a>
+
+<a href="/export">
+<button class="export">
+Download CSV
+</button>
+</a>
+
+</div>
+
+<div class="history">
+
+<h2>📝 Recent Votes</h2>
+
+<table>
+
+<tr>
+<th>Coffee</th>
+<th>Time</th>
+</tr>
+
+{% for row in history %}
+
+<tr>
+<td>{{ row['coffee_name'] }}</td>
+<td>{{ row['vote_time'] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function searchCoffee(){
+
+let input =
+document.getElementById("search")
+.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+if(card.innerText
+.toLowerCase()
+.includes(input))
+{
+card.style.display="block";
+}
+else
+{
+card.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
