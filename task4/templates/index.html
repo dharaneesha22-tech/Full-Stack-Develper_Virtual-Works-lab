@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuoteVerse AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<div class="particles"></div>
+
+<header>
+
+<h1>🚀 QuoteVerse AI</h1>
+
+<div class="theme-box">
+<button id="themeBtn">🌙 Theme</button>
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Total Quotes</h3>
+<h2 id="quoteCount">0</h2>
+</div>
+
+<div class="card">
+<h3>Favorites</h3>
+<h2 id="favCount">0</h2>
+</div>
+
+<div class="card">
+<h3>XP</h3>
+<h2 id="xp">0</h2>
+</div>
+
+<div class="card">
+<h3>Level</h3>
+<h2 id="level">Beginner</h2>
+</div>
+
+</div>
+
+<div class="glass">
+
+<select id="mood">
+<option>Motivated 🚀</option>
+<option>Happy 😊</option>
+<option>Focused 🎯</option>
+<option>Calm 😌</option>
+<option>Success 💰</option>
+</select>
+
+<div class="quote-box">
+
+<p id="quote">
+Click Generate Quote
+</p>
+
+<h4 id="author"></h4>
+
+</div>
+
+<div class="buttons">
+
+<button onclick="generateQuote()">Generate</button>
+
+<button onclick="copyQuote()">Copy</button>
+
+<button onclick="speakQuote()">Voice</button>
+
+<button onclick="saveFavorite()">Favorite</button>
+
+<button onclick="downloadQuote()">Download</button>
+
+</div>
+
+</div>
+
+<div class="history">
+
+<h2>Recent History</h2>
+
+<ul id="historyList"></ul>
+
+</div>
+
+<div class="analytics">
+
+<h2>Analytics</h2>
+
+<canvas id="chart"></canvas>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static',filename='script.js') }}"></script>
+
+</body>
+</html>
